@@ -18,7 +18,7 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>article title - Hexo</title>
+  <title>Javascript数据结构——顺序栈和链栈的实现 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,9 +163,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="article title">
+            <span class="h2" id="subtitle" title="Javascript数据结构——顺序栈和链栈的实现">
               
-                article title
+                Javascript数据结构——顺序栈和链栈的实现
               
             </span>
 
@@ -175,8 +175,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-05-24 21:20" pubdate>
-        2021年5月24日 晚上
+      <time datetime="2021-05-27 21:20" pubdate>
+        2021年5月27日 晚上
       </time>
     </span>
   
@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      627 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      7
        分钟
     </span>
   
@@ -227,15 +227,37 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">article title</h1>
+            <h1 style="display: none">Javascript数据结构——顺序栈和链栈的实现</h1>
             
             <div class="markdown-body">
-              
+              <blockquote>
+<p>本系列将参照《数据结构(C语言版)》第2版 (严蔚敏等) ，使用Javascript的方式复现书中的代码，以用于复习数据结构和ES语法。本文对应书中第三章 栈和队列的前三节内容，即顺序栈和链栈的基本实现。</p>
+</blockquote>
+<h2 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h2><p>顺序栈是指利用顺序存储结构实现的栈，即利用一组地址连续的存储单元依次存放自栈底到 栈顶的数据元素，同时附设指针top指示栈顶元素在顺序栈中的位置，指针base指示栈底位置，stacksize表示栈的最大容量。</p>
+<p><img src="/post_img/jsA1/1.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面将实现顺序栈的初始化，入栈，出栈和获取栈顶元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> MAXSIZE = <span class="hljs-number">100</span>;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stack2</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">InitStack</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.items = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(MAXSIZE); <span class="hljs-comment">//使用Javascript的Array对象构建一个数组空间</span><br>    <span class="hljs-built_in">this</span>.base = <span class="hljs-built_in">this</span>.top = <span class="hljs-number">0</span>; <span class="hljs-comment">//用数组下标来模拟指针</span><br>    <span class="hljs-built_in">this</span>.stacksize = MAXSIZE;<br>  &#125;<br><br>  <span class="hljs-function"><span class="hljs-title">Push</span>(<span class="hljs-params">num</span>)</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.top - <span class="hljs-built_in">this</span>.base == <span class="hljs-built_in">this</span>.stacksize) <span class="hljs-keyword">return</span> <span class="hljs-built_in">Error</span>; <span class="hljs-comment">//判断栈是否已满</span><br>    <span class="hljs-built_in">this</span>.items[top] = num;<br>    top++;<br>  &#125;<br><br>  <span class="hljs-function"><span class="hljs-title">Pop</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.top == <span class="hljs-built_in">this</span>.base) <span class="hljs-keyword">return</span> <span class="hljs-built_in">Error</span>; <span class="hljs-comment">//判断栈是否为空</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.items[top--];<br>  &#125;<br><br>  <span class="hljs-function"><span class="hljs-title">GetTop</span>(<span class="hljs-params"></span>)</span> &#123;<br>      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.top == <span class="hljs-built_in">this</span>.base) <span class="hljs-keyword">return</span> <span class="hljs-built_in">Error</span>; <span class="hljs-comment">//判断栈是否为空</span><br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.items[top - <span class="hljs-number">1</span>]; <span class="hljs-comment">//由于栈顶指针top对应的数组索引等于栈顶元素的索引加一，所以这里要减去一</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="链栈"><a href="#链栈" class="headerlink" title="链栈"></a>链栈</h2><p>链栈是指采用链式存储结构实现的栈。通常链栈用单链表来表示。由于栈的主要操作是在栈顶插入和删除， 显然以链表的头部作 为栈顶是最方便的， 而且没必要像单链表那样为了操作方便附加一 个头结点。</p>
+<p><img src="/post_img/jsA1/2.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面将实现链栈的初始化，入栈，出栈和获取栈顶元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//新建一个StackNode类模拟链表节点，value用来储存值，NextStackNode用于存放指针</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StackNode</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">value</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.value = value;<br>        <span class="hljs-built_in">this</span>.NextStackNode = <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stack3</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">InitStack</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.base = <span class="hljs-built_in">this</span>.top = <span class="hljs-literal">null</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-title">Push</span>(<span class="hljs-params">num</span>)</span> &#123;<br>        <span class="hljs-keyword">let</span> temp = <span class="hljs-keyword">new</span> StackNode(num);<br>        temp.NextStackNode = <span class="hljs-built_in">this</span>.top; <span class="hljs-comment">//让新节点的指针指向原有栈顶，然后让栈顶指针指向新节点，这样新节点就成为新的栈顶</span><br>        <span class="hljs-built_in">this</span>.top = temp;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-title">Pop</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.top == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">Error</span>; <span class="hljs-comment">//判断节点是否为空</span><br>        <span class="hljs-keyword">let</span> temp = <span class="hljs-built_in">this</span>.top.value; <span class="hljs-comment">//暂存要Pop的节点的值，在最后返回</span><br>        <span class="hljs-built_in">this</span>.top = <span class="hljs-built_in">this</span>.top.NextStackNode; <span class="hljs-comment">//让指向栈顶的节点指向下一位</span><br>        <span class="hljs-keyword">return</span> temp;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-title">GetTop</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.top == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">Error</span>; <span class="hljs-comment">//判断节点是否为空</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.top.value;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript%E7%AE%97%E6%B3%95/">JavaScript算法</a>
+                    
+                  </div>
                 
               </div>
               
@@ -253,12 +275,6 @@
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2021/05/24/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
