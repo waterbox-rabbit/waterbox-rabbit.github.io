@@ -182,29 +182,83 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/05/27/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E9%A1%BA%E5%BA%8F%E6%A0%88%E5%92%8C%E9%93%BE%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/" target="_self">
-          <img src="/post_img/A.jpg" srcset="/img/loading.gif" lazyload alt="Javascript数据结构——顺序栈和链栈的实现">
+        <a href="/2021/05/27/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E6%A0%88%E4%B8%8E%E9%80%92%E5%BD%92/" target="_self">
+          <img src="/post_img/A.jpg" srcset="/img/loading.gif" lazyload alt="Javascript数据结构（2）——栈与递归">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/05/27/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E9%A1%BA%E5%BA%8F%E6%A0%88%E5%92%8C%E9%93%BE%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/" target="_self">
-          Javascript数据结构——顺序栈和链栈的实现
+        <a href="/2021/05/27/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E6%A0%88%E4%B8%8E%E9%80%92%E5%BD%92/" target="_self">
+          Javascript数据结构（2）——栈与递归
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/05/27/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E9%A1%BA%E5%BA%8F%E6%A0%88%E5%92%8C%E9%93%BE%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/" target="_self">
+        <a href="/2021/05/27/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E6%A0%88%E4%B8%8E%E9%80%92%E5%BD%92/" target="_self">
           
           
             
           
           
-本系列将参照《数据结构(C语言版)》第2版 (严蔚敏等) ，使用Javascript的方式复现书中的代码，以用于复习数据结构和ES语法。本文对应书中第三章 栈和队列的前三节内容，即顺序栈和链栈的基本实现。
+本系列将参照《数据结构(C语言版)》第2版 (严蔚敏等) ，使用 Javascript 的方式复现书中的代码，以用于复习数据结构和ES语法。本文对应书中第三章 栈和队列 的第四节内容，即栈与递归。
 
-顺序栈顺序栈是指利用顺序存储结构实现的栈，即利用一组地址连续的存储单元依次存放自栈底到 栈顶的数据元素，同时附设指针top指示栈顶元素在顺序栈中的位置，指针base指示栈底位置，stacks
+递归所谓递归是指，若在一个函数、过程或者数据结构定义的内部又直接（或间接）出现定义本身的应用，则称它们是递归的，或者是递归定义的。例如斐波那契数列就是递归定义的：
+
+斐波那契数列除第一位和第二位为 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-27 21:20" pubdate>
+              2021-05-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JavaScript%E7%AE%97%E6%B3%95/">JavaScript算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/27/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E9%A1%BA%E5%BA%8F%E6%A0%88%E5%92%8C%E9%93%BE%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0%20-%20%E5%89%AF%E6%9C%AC/" target="_self">
+          <img src="/post_img/A.jpg" srcset="/img/loading.gif" lazyload alt="Javascript数据结构（1）——顺序栈和链栈的实现">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/27/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E9%A1%BA%E5%BA%8F%E6%A0%88%E5%92%8C%E9%93%BE%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0%20-%20%E5%89%AF%E6%9C%AC/" target="_self">
+          Javascript数据结构（1）——顺序栈和链栈的实现
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/27/Javascript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E9%A1%BA%E5%BA%8F%E6%A0%88%E5%92%8C%E9%93%BE%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0%20-%20%E5%89%AF%E6%9C%AC/" target="_self">
+          
+          
+            
+          
+          
+本系列将参照《数据结构(C语言版)》第2版 (严蔚敏等) ，使用 Javascript 的方式复现书中的代码，以用于复习数据结构和 ES 语法。本文对应书中第三章 栈和队列 的前三节内容，即顺序栈和链栈的基本实现。
+
+顺序栈顺序栈是指利用顺序存储结构实现的栈，即利用一组地址连续的存储单元依次存放自栈底到栈顶的数据元素，同时附设指针 top 指示栈顶元素在顺序栈中的位置，指针 base 指示栈底位
         </a>
       </p>
 
